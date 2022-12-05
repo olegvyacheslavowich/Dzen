@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Dzen</string>
+    <string name="category_icon_content_description">Category icon</string>
+    <string name="category_info_content_description">Category info</string>
+    <string name="category_sport">Sport</string>
+</resources>
