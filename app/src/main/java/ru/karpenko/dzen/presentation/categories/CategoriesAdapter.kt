@@ -3,7 +3,6 @@ package ru.karpenko.dzen.presentation.categories
 import android.animation.AnimatorInflater
 import android.animation.AnimatorSet
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,18 +39,27 @@ class CategoriesAdapter(private val onClickListener: (category: Category) -> Uni
                 cardCategoryMain.nameTextView.text = category.name
                 cardCategoryMain.iconImageView.setImageResource(category.iconId)
                 cardCategoryInfo.infoTextView.text = category.info
+
                 cardCategoryMain.infoImageView.setOnClickListener {
                     flipCard(binding.root.context,
                         cardCategoryInfoFrameLayout,
-                        cardCategoryMainFrameLayout) {
+                        cardCategoryMainFrameLayout)
+                }
 
-                        cardCategoryInfo.infoTextView.setOnClickListener {
-                            flipCard(binding.root.context,
-                                cardCategoryMainFrameLayout,
-                                cardCategoryInfoFrameLayout) {
-                                cardCategoryMain.infoImageView.setOnClickListener(null)
-                            }
-                        }
+                cardCategoryInfo.infoCard.setOnClickListener {
+                    flipCard(binding.root.context,
+                        cardCategoryMainFrameLayout,
+                        cardCategoryInfoFrameLayout)
+                }
+
+                cardCategoryMain.mainCard.setOnClickListener {
+                    category.isClicked = !category.isClicked
+                    if (category.isClicked) {
+                        cardCategoryMain.mainCard.setCardBackgroundColor(binding.root.context.getColor(
+                            R.color.card_background_clicked))
+                    } else {
+                        cardCategoryMain.mainCard.setCardBackgroundColor(binding.root.context.getColor(
+                            R.color.card_background))
                     }
                 }
 
@@ -61,36 +69,24 @@ class CategoriesAdapter(private val onClickListener: (category: Category) -> Uni
             }
         }
 
-        private fun flipCard(
-            context: Context,
-            visibleView: View,
-            inVisibleView: View,
-            action: () -> Unit,
-        ) {
-            try {
-                visibleView.isVisible = true
-                val flipOutAnimatorSet =
-                    AnimatorInflater.loadAnimator(
-                        context,
-                        R.animator.flip_out
-                    ) as AnimatorSet
-                flipOutAnimatorSet.setTarget(inVisibleView)
-                val flipInAnimationSet =
-                    AnimatorInflater.loadAnimator(
-                        context,
-                        R.animator.flip_in
-                    ) as AnimatorSet
-                flipInAnimationSet.setTarget(visibleView)
-                flipOutAnimatorSet.start()
-                flipInAnimationSet.start()
-                flipInAnimationSet.doOnEnd {
-                    inVisibleView.isInvisible = true
-                    action()
-                }
-            } catch (e: Exception) {
-                Log.i("ERROR", e.localizedMessage)
-                //logHandledException(e)
+        private fun flipCard(context: Context, visibleView: View, inVisibleView: View) {
+            visibleView.isVisible = true
+            val scale = context.resources.displayMetrics.density
+            val cameraDist = CAMERA_DISTANCE_BIAS * scale
+            visibleView.cameraDistance = cameraDist
+            inVisibleView.cameraDistance = cameraDist
+            val flipOutAnimatorSet =
+                AnimatorInflater.loadAnimator(context, R.animator.flip_out) as AnimatorSet
+            flipOutAnimatorSet.setTarget(inVisibleView)
+            val flipInAnimationSet =
+                AnimatorInflater.loadAnimator(context, R.animator.flip_in) as AnimatorSet
+            flipInAnimationSet.setTarget(visibleView)
+            flipOutAnimatorSet.start()
+            flipInAnimationSet.start()
+            flipInAnimationSet.doOnEnd {
+                inVisibleView.isInvisible = true
             }
+
         }
 
     }
@@ -102,5 +98,9 @@ class CategoriesAdapter(private val onClickListener: (category: Category) -> Uni
         override fun areContentsTheSame(oldItem: Category, newItem: Category): Boolean =
             oldItem == newItem
 
+    }
+
+    companion object {
+        const val CAMERA_DISTANCE_BIAS = 8000
     }
 }

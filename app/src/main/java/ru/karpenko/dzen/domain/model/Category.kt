@@ -5,4 +5,5 @@ data class Category(
     val name: String,
     val info: String,
     val iconId: Int,
+    var isClicked: Boolean = false,
 )

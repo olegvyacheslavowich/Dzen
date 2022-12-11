@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <color name="colorPrimary">#EEEEEE</color>
+    <color name="colorPrimaryVariant">#FEFCF3</color>
+    <color name="windowBackground">#222831</color>
+
+    <color name="card_background">#EEEEEE</color>
+    <color name="card_background_clicked">#00ADB5</color>
+    <color name="card_info">#222831</color>
+    <color name="card_icon">#222831</color>
+    <color name="card_category_name">#222831</color>
+    <color name="card_category_info">#222831</color>
+
+</resources>

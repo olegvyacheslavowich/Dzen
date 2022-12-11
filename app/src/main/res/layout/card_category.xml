@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/category_container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <FrameLayout
         android:id="@+id/cardCategoryMainFrameLayout"
-        android:layout_width="100dp"
+        android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_margin="12dp"
         android:visibility="visible"
@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <include
-            android:id="@+id/card_category_main"
+            android:id="@+id/cardCategoryMain"
             layout="@layout/card_category_main"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
@@ -25,7 +25,7 @@
 
     <FrameLayout
         android:id="@+id/cardCategoryInfoFrameLayout"
-        android:layout_width="100dp"
+        android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_margin="12dp"
         android:visibility="gone"
@@ -35,7 +35,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <include
-            android:id="@+id/card_category_info"
+            android:id="@+id/cardCategoryInfo"
             layout="@layout/card_category_info"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

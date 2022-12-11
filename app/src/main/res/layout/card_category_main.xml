@@ -5,11 +5,10 @@
     android:id="@+id/mainCard"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="@color/card_background_1"
-    android:clickable="true"
-    android:focusable="true"
     android:visibility="visible"
-    app:cardCornerRadius="12dp">
+    app:cardBackgroundColor="@color/card_background"
+    app:cardCornerRadius="12dp"
+    app:checkedIcon="@null">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -22,12 +21,12 @@
             android:layout_gravity="center"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:backgroundTint="@color/card_icon_1"
+            android:backgroundTint="@color/card_icon"
             android:backgroundTintMode="add"
             android:contentDescription="@string/category_icon_content_description"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/card_icon_1"
+            app:tint="@color/card_icon"
             tools:src="@drawable/sport_32" />
 
         <ImageView
@@ -39,7 +38,7 @@
             android:src="@drawable/info_22"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/card_info_1" />
+            app:tint="@color/card_info" />
 
         <TextView
             android:id="@+id/nameTextView"

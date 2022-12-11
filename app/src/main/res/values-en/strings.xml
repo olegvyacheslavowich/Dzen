@@ -4,4 +4,5 @@
     <string name="category_icon_content_description">Category icon</string>
     <string name="category_info_content_description">Category info</string>
     <string name="category_sport">Sport</string>
+    <string name="skip">Skip</string>
 </resources>

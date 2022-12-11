@@ -1,11 +1,12 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/infoCard"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="@color/card_background_1"
     android:clickable="true"
     android:focusable="true"
+    app:cardBackgroundColor="@color/card_background"
     app:cardCornerRadius="12dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,6 +15,7 @@
 
         <TextView
             android:id="@+id/infoTextView"
+            style="@style/CategoryInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAlignment="center"
@@ -21,7 +23,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="TEST" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>

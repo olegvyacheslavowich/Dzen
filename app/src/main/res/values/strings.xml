@@ -3,4 +3,5 @@
     <string name="category_icon_content_description">Иконка категории</string>
     <string name="category_info_content_description">Инормация о категории</string>
     <string name="category_sport">Спорт</string>
+    <string name="skip">Пропустить</string>
 </resources>
